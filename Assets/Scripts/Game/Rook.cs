@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Rook : ChessPieceBase
 {
-    public override List<Vector2Int> GetValidMoves(ChessPieceBase[,] board)
+    public override List<HighLightData> GetValidMoves(ChessPieceBase[,] board)
     {
-        List<Vector2Int> validMoves = new List<Vector2Int>();
+        List<HighLightData> validMoves = new List<HighLightData>();
         Vector2Int currentPosition = this.Position;
 
         // Di chuyển theo hàng ngang hoặc dọc

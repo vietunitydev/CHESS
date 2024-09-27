@@ -13,8 +13,5 @@ public class HighLight : MonoBehaviour
         BoardManager.Instance.MovePiece(Position);
     }
 
-    public enum HighLightColor
-    {
-        Blue, Red
-    }
+    
 }

@@ -6,9 +6,9 @@ public class Pawn : ChessPieceBase
 {
 
     [SerializeField] private bool isFirstMove = true;
-    public override List<Vector2Int> GetValidMoves(ChessPieceBase[,] board)
+    public override List<HighLightData> GetValidMoves(ChessPieceBase[,] board)
     {
-        List<Vector2Int> validMoves = new List<Vector2Int>();
+        List<HighLightData> validMoves = new List<HighLightData>();
         // hướng đi 
         int direction = ColorType == ColorType.Black ? 1 : -1;
 
@@ -20,7 +20,8 @@ public class Pawn : ChessPieceBase
         if (IsInsideBoard(moveOneStep) && board[moveOneStep.x, moveOneStep.y] == null)
         {
             Debug.Log($"--- (Pawn) add move 1 step forward");
-            validMoves.Add(moveOneStep);
+            HighLightData data = new HighLightData(HighLightColor.Blue, moveOneStep);
+            validMoves.Add(data);
         }
 
         // 2. Di chuyển 2 ô nếu là nước đi đầu tiên
@@ -32,7 +33,8 @@ public class Pawn : ChessPieceBase
             if (IsInsideBoard(moveTwoSteps) && board[moveTwoSteps.x, moveTwoSteps.y] == null && board[moveOneStepAgain.x, moveOneStepAgain.y] == null)
             {
                 Debug.Log($"--- (Pawn) add move 2 step forward");
-                validMoves.Add(moveTwoSteps);
+                HighLightData data = new HighLightData(HighLightColor.Blue, moveTwoSteps);
+                validMoves.Add(data);
             }
         }
 
@@ -40,14 +42,16 @@ public class Pawn : ChessPieceBase
         Vector2Int leftDiagonal = new Vector2Int(currentPosition.x - 1, currentPosition.y + direction);
         if (IsInsideBoard(leftDiagonal) && board[leftDiagonal.x, leftDiagonal.y] != null && board[leftDiagonal.x, leftDiagonal.y].ColorType != this.ColorType)
         {
-            validMoves.Add(leftDiagonal);
+            HighLightData data = new HighLightData(HighLightColor.Red, leftDiagonal);
+            validMoves.Add(data);
         }
         
         // 4. Ăn quân chéo phải
         Vector2Int rightDiagonal = new Vector2Int(currentPosition.x + 1, currentPosition.y + direction);
         if (IsInsideBoard(rightDiagonal) && board[rightDiagonal.x, rightDiagonal.y] != null && board[rightDiagonal.x, rightDiagonal.y].ColorType != this.ColorType)
         {
-            validMoves.Add(rightDiagonal);
+            HighLightData data = new HighLightData(HighLightColor.Red, rightDiagonal);
+            validMoves.Add(data);
         }
         
         return validMoves;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Knight : ChessPieceBase
 {
-    public override List<Vector2Int> GetValidMoves(ChessPieceBase[,] board)
+    public override List<HighLightData> GetValidMoves(ChessPieceBase[,] board)
     {
-        List<Vector2Int> validMoves = new List<Vector2Int>();
+        List<HighLightData> validMoves = new List<HighLightData>();
         Vector2Int currentPosition = this.Position;
 
         // Nước đi hình chữ L (2 ô theo một hướng, sau đó 1 ô theo hướng vuông góc)
@@ -25,7 +25,8 @@ public class Knight : ChessPieceBase
         {
             if (IsInsideBoard(move) && (board[move.x, move.y] == null || board[move.x, move.y].ColorType != this.ColorType))
             {
-                validMoves.Add(move);
+                HighLightData data = new HighLightData(HighLightColor.Blue, move);
+                validMoves.Add(data);
             }
         }
 

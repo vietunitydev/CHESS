@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class BoardManager : MonoSingleton<BoardManager>
 {
     [SerializeField] private BoardSpawner boardSpawner;
-    [SerializeField] private List<GameObject> highLights = new();
+    [SerializeField] private List<HighLight> highLights = new();
     public ChessPieceBase[,] ChessBoard { get; private set; }
     private ChessPieceBase currentChess;
 
@@ -31,42 +31,40 @@ public class BoardManager : MonoSingleton<BoardManager>
     
     public void MovePiece(ChessPieceBase piece, Vector2Int newPosition)
     {
-        if (piece.GetValidMoves(ChessBoard).Contains(newPosition))
-        {
-            piece.HandleAfterMove();
-            ChessBoard[piece.Position.x, piece.Position.y] = null;
-            piece.Position = newPosition;
-            ChessBoard[newPosition.x, newPosition.y] = piece;
+        piece.HandleAfterMove();
+        ChessBoard[piece.Position.x, piece.Position.y] = null;
+        piece.Position = newPosition;
+        ChessBoard[newPosition.x, newPosition.y] = piece;
 
-            piece.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
-        }
+        piece.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
         
         ClearHighLight();
     }
     public void MovePiece(Vector2Int newPosition)
     {
-        if (currentChess.GetValidMoves(ChessBoard).Contains(newPosition))
-        {
-            currentChess.HandleAfterMove();
-            ChessBoard[currentChess.Position.x, currentChess.Position.y] = null;
-            currentChess.Position = newPosition;
-            ChessBoard[newPosition.x, newPosition.y] = currentChess;
+        currentChess.HandleAfterMove();
+        ChessBoard[currentChess.Position.x, currentChess.Position.y] = null;
+        currentChess.Position = newPosition;
+        ChessBoard[newPosition.x, newPosition.y] = currentChess;
 
-            currentChess.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
-        }
+        currentChess.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
         
         ClearHighLight();
     }
 
-    private void SpawnHighLight(List<Vector2Int> moves)
+    private void SpawnHighLight(List<HighLightData> moves)
     {
         // spawn highLight
         foreach (var move in moves)
         {
-            var highLightObject = boardSpawner.SpawnHighLightBlue(move.x, move.y);
-            HighLight highLight = highLightObject.GetComponent<HighLight>();
-            highLight.Position = new Vector2Int(move.x, move.y);
-            highLights.Add(highLightObject);
+            if (move.Color == HighLightColor.Red)
+            {
+                highLights.Add(boardSpawner.SpawnHighLightRed(move.Position.x, move.Position.y));
+            }
+            else if (move.Color == HighLightColor.Blue)
+            {
+                highLights.Add(boardSpawner.SpawnHighLightBlue(move.Position.x, move.Position.y));
+            }
         }
     }
 

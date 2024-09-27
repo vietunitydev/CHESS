@@ -19,7 +19,7 @@ public abstract class ChessPieceBase : MonoBehaviour
         BoardManager.Instance.OnClickChess(this);
     }
     
-    public abstract List<Vector2Int> GetValidMoves(ChessPieceBase[,] board);
+    public abstract List<HighLightData> GetValidMoves(ChessPieceBase[,] board);
     public abstract void HandleAfterMove(); 
     
     protected bool IsInsideBoard(Vector2Int position)
@@ -27,9 +27,9 @@ public abstract class ChessPieceBase : MonoBehaviour
         return position.x >= 0 && position.x < 8 && position.y >= 0 && position.y < 8;
     }
     
-    protected List<Vector2Int> GetRookLikeMoves(ChessPieceBase[,] board, Vector2Int currentPosition)
+    protected List<HighLightData> GetRookLikeMoves(ChessPieceBase[,] board, Vector2Int currentPosition)
     {
-        List<Vector2Int> validMoves = new List<Vector2Int>();
+        List<HighLightData> validMoves = new List<HighLightData>();
 
         // Hàng ngang (trái-phải)
         for (int x = currentPosition.x + 1; x < 8; x++)
@@ -54,9 +54,9 @@ public abstract class ChessPieceBase : MonoBehaviour
         return validMoves;
     }
 
-    protected List<Vector2Int> GetBishopLikeMoves(ChessPieceBase[,] board, Vector2Int currentPosition)
+    protected List<HighLightData> GetBishopLikeMoves(ChessPieceBase[,] board, Vector2Int currentPosition)
     {
-        List<Vector2Int> validMoves = new List<Vector2Int>();
+        List<HighLightData> validMoves = new List<HighLightData>();
         
         for (int i = 1; i < 8; i++)
         {
@@ -82,18 +82,20 @@ public abstract class ChessPieceBase : MonoBehaviour
         return validMoves;
     }
 
-    private bool AddMoveIfValid(ChessPieceBase[,] board, List<Vector2Int> validMoves, int x, int y)
+    private bool AddMoveIfValid(ChessPieceBase[,] board, List<HighLightData> validMoves, int x, int y)
     {
         if (IsInsideBoard(new Vector2Int(x, y)))
         {
             if (board[x, y] == null)
             {
-                validMoves.Add(new Vector2Int(x, y));
+                HighLightData data = new HighLightData(HighLightColor.Blue, new Vector2Int(x, y));
+                validMoves.Add(data);
                 return false;
             }
             else if (board[x, y].ColorType != ColorType)
             {
-                validMoves.Add(new Vector2Int(x, y));
+                HighLightData data = new HighLightData(HighLightColor.Red, new Vector2Int(x, y));
+                validMoves.Add(data);
                 return true;
             }
             else
@@ -104,4 +106,25 @@ public abstract class ChessPieceBase : MonoBehaviour
         return true;
     }
 
+}
+
+
+public class HighLightData
+{
+    private HighLightColor _color;
+    private Vector2Int _position;
+
+    public HighLightData(HighLightColor color, Vector2Int pos)
+    {
+        _color = color;
+        _position = pos;
+    }
+    public HighLightColor Color { get; set; }
+    public Vector2Int Position { get; set; }
+
+}
+
+public enum HighLightColor
+{
+    Blue, Red
 }
