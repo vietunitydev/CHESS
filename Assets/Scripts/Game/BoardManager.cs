@@ -33,6 +33,7 @@ public class BoardManager : MonoSingleton<BoardManager>
     {
         if (piece.GetValidMoves(ChessBoard).Contains(newPosition))
         {
+            piece.HandleAfterMove();
             ChessBoard[piece.Position.x, piece.Position.y] = null;
             piece.Position = newPosition;
             ChessBoard[newPosition.x, newPosition.y] = piece;
@@ -46,6 +47,7 @@ public class BoardManager : MonoSingleton<BoardManager>
     {
         if (currentChess.GetValidMoves(ChessBoard).Contains(newPosition))
         {
+            currentChess.HandleAfterMove();
             ChessBoard[currentChess.Position.x, currentChess.Position.y] = null;
             currentChess.Position = newPosition;
             ChessBoard[newPosition.x, newPosition.y] = currentChess;
