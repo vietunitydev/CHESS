@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour
+public class BoardManager : MonoSingleton<BoardManager>
 {
-    private ChessPieceBase[,] _chessBoard;
     [SerializeField] private BoardSpawner boardSpawner;
+    
+    public ChessPieceBase[,] ChessBoard { get; private set; }
 
-    private void Start()
+    protected override void DoOnStart()
     {
-        _chessBoard = boardSpawner.GenerateBoard();
-        
+        base.DoOnStart();
+        ChessBoard = boardSpawner.GenerateBoard();
     }
 }
