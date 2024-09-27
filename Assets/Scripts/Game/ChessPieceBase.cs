@@ -18,16 +18,6 @@ public abstract class ChessPieceBase : MonoBehaviour
         InGameScreen.Instance.SetText(gameObject.name);
         BoardManager.Instance.OnClickChess(this);
     }
-
-    public virtual void OnCLick()
-    {
-        
-    }
-
-    public virtual void Move()
-    {
-        
-    }
     
     public abstract List<Vector2Int> GetValidMoves(ChessPieceBase[,] board);
     
@@ -66,19 +56,24 @@ public abstract class ChessPieceBase : MonoBehaviour
     protected List<Vector2Int> GetBishopLikeMoves(ChessPieceBase[,] board, Vector2Int currentPosition)
     {
         List<Vector2Int> validMoves = new List<Vector2Int>();
-
-        // Di chuyển chéo (cả bốn hướng: trên-trái, trên-phải, dưới-trái, dưới-phải)
+        
         for (int i = 1; i < 8; i++)
         {
             // Diagonal top-right
             if (AddMoveIfValid(board, validMoves, currentPosition.x + i, currentPosition.y + i)) break;
-        
+        }
+        for (int i = 1; i < 8; i++)
+        {
             // Diagonal top-left
             if (AddMoveIfValid(board, validMoves, currentPosition.x - i, currentPosition.y + i)) break;
-        
+        }
+        for (int i = 1; i < 8; i++)
+        {
             // Diagonal bottom-right
             if (AddMoveIfValid(board, validMoves, currentPosition.x + i, currentPosition.y - i)) break;
-        
+        }
+        for (int i = 1; i < 8; i++)
+        {
             // Diagonal bottom-left
             if (AddMoveIfValid(board, validMoves, currentPosition.x - i, currentPosition.y - i)) break;
         }
@@ -95,7 +90,7 @@ public abstract class ChessPieceBase : MonoBehaviour
                 validMoves.Add(new Vector2Int(x, y));
                 return false;
             }
-            else if (board[x, y].ColorType != this.ColorType)
+            else if (board[x, y].ColorType != ColorType)
             {
                 validMoves.Add(new Vector2Int(x, y));
                 return true;
