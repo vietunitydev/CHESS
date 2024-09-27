@@ -29,38 +29,38 @@ public class BoardSpawner : MonoBehaviour
    {
       ChessPieceBase[,] chessBoard = new ChessPieceBase[8, 8];
 
-      chessBoard[4, 0] = Instantiate(KingBlack, GetPosition(5, 1), Quaternion.identity, board);
-      chessBoard[3, 0] = Instantiate(QueenBlack, GetPosition(4, 1), Quaternion.identity, board);
+      chessBoard[4, 0] = Instantiate(KingBlack, GetPosition(4,0), Quaternion.identity, board);
+      chessBoard[3, 0] = Instantiate(QueenBlack, GetPosition(3, 0), Quaternion.identity, board);
 
-      chessBoard[2, 0] = Instantiate(BishopBlack, GetPosition(3, 1), Quaternion.identity, board);
-      chessBoard[5, 0] = Instantiate(BishopBlack, GetPosition(6, 1), Quaternion.identity, board);
+      chessBoard[2, 0] = Instantiate(BishopBlack, GetPosition(2, 0), Quaternion.identity, board);
+      chessBoard[5, 0] = Instantiate(BishopBlack, GetPosition(5, 0), Quaternion.identity, board);
 
-      chessBoard[1, 0] = Instantiate(KnightBlack, GetPosition(2, 1), Quaternion.identity, board);
-      chessBoard[6, 0] = Instantiate(KnightBlack, GetPosition(7, 1), Quaternion.identity, board);
+      chessBoard[1, 0] = Instantiate(KnightBlack, GetPosition(1, 0), Quaternion.identity, board);
+      chessBoard[6, 0] = Instantiate(KnightBlack, GetPosition(6, 0), Quaternion.identity, board);
 
-      chessBoard[0, 0] = Instantiate(RookBlack, GetPosition(1, 1), Quaternion.identity, board);
-      chessBoard[7, 0] = Instantiate(RookBlack, GetPosition(8, 1), Quaternion.identity, board);
+      chessBoard[0, 0] = Instantiate(RookBlack, GetPosition(0, 0), Quaternion.identity, board);
+      chessBoard[7, 0] = Instantiate(RookBlack, GetPosition(7, 0), Quaternion.identity, board);
       
       for (int i = 0; i < 8; i++)
       {
-         chessBoard[i, 1] = Instantiate(PawnBlack, GetPosition(i + 1, 2), Quaternion.identity, board);
+         chessBoard[i, 1] = Instantiate(PawnBlack, GetPosition(i, 1), Quaternion.identity, board);
       }
 
-      chessBoard[4, 7] = Instantiate(KingWhite, GetPosition(5, 8), Quaternion.identity, board);
-      chessBoard[3, 7] = Instantiate(QueenWhite, GetPosition(4, 8), Quaternion.identity, board);
+      chessBoard[4, 7] = Instantiate(KingWhite, GetPosition(4, 7), Quaternion.identity, board);
+      chessBoard[3, 7] = Instantiate(QueenWhite, GetPosition(3, 7), Quaternion.identity, board);
 
-      chessBoard[2, 7] = Instantiate(BishopWhite, GetPosition(3, 8), Quaternion.identity, board);
-      chessBoard[5, 7] = Instantiate(BishopWhite, GetPosition(6, 8), Quaternion.identity, board);
+      chessBoard[2, 7] = Instantiate(BishopWhite, GetPosition(2, 7), Quaternion.identity, board);
+      chessBoard[5, 7] = Instantiate(BishopWhite, GetPosition(5, 7), Quaternion.identity, board);
 
-      chessBoard[1, 7] = Instantiate(KnightWhite, GetPosition(2, 8), Quaternion.identity, board);
-      chessBoard[6, 7] = Instantiate(KnightWhite, GetPosition(7, 8), Quaternion.identity, board);
+      chessBoard[1, 7] = Instantiate(KnightWhite, GetPosition(1, 7), Quaternion.identity, board);
+      chessBoard[6, 7] = Instantiate(KnightWhite, GetPosition(6, 7), Quaternion.identity, board);
 
-      chessBoard[0, 7] = Instantiate(RookWhite, GetPosition(1, 8), Quaternion.identity, board);
-      chessBoard[7, 7] = Instantiate(RookWhite, GetPosition(8, 8), Quaternion.identity, board);
+      chessBoard[0, 7] = Instantiate(RookWhite, GetPosition(0, 7), Quaternion.identity, board);
+      chessBoard[7, 7] = Instantiate(RookWhite, GetPosition(7, 7), Quaternion.identity, board);
 
       for (int i = 0; i < 8; i++)
       {
-         chessBoard[i, 6] = Instantiate(PawnWhite, GetPosition(i + 1, 7), Quaternion.identity, board);
+         chessBoard[i, 6] = Instantiate(PawnWhite, GetPosition(i, 6), Quaternion.identity, board);
       }
 
       for (int i = 0; i < 8; i++)
@@ -77,24 +77,24 @@ public class BoardSpawner : MonoBehaviour
       return chessBoard;
    }
 
-   private Vector3 GetPosition(int x, int y)
+   public Vector3 GetPosition(int x, int y)
    {
-      x = x - 4;
-      y = y - 4;
+      x = x - 3;
+      y = y - 3;
 
       return new Vector3(-sideSquare/2 + x * sideSquare, height,-sideSquare/2 + y * sideSquare);
    }
    
-   private Vector3 GetPosition(Vector2Int newPos)
+   public Vector3 GetPosition(Vector2Int newPos)
    {
-      var x = newPos.x - 4;
-      var y = newPos.y - 4;
+      var x = newPos.x - 3;
+      var y = newPos.y - 3;
 
       return new Vector3(-sideSquare/2 + x * sideSquare, height,-sideSquare/2 + y * sideSquare);
    }
 
    public GameObject SpawnHighLight(int x, int y)
    {
-      return Instantiate(highLightPrefab, GetPosition(x + 1, y + 1), Quaternion.identity, board);
+      return Instantiate(highLightPrefab, GetPosition(x, y), Quaternion.identity, board);
    }
 }
