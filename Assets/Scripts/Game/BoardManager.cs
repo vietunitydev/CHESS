@@ -10,6 +10,7 @@ public class BoardManager : MonoBehaviour
 
     private void Start()
     {
-        _chessBoard = new ChessPieceBase[8,8];
+        _chessBoard = boardSpawner.GenerateBoard();
+        
     }
 }

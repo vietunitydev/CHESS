@@ -23,52 +23,47 @@ public class BoardSpawner : MonoBehaviour
    [SerializeField] private ChessPieceBase QueenWhite;
    [SerializeField] private ChessPieceBase KingWhite;
    [SerializeField] private Transform board;
-
-   private List<ChessPieceBase> chesses;
-   
    
 
-   private void Start()
+   public ChessPieceBase[,] GenerateBoard()
    {
-      chesses = new List<ChessPieceBase>();
-      GenerateBoard();
-   }
+      ChessPieceBase[,] chessBoard = new ChessPieceBase[8, 8];
 
-   private void GenerateBoard()
-   {
-      Instantiate(KingBlack, GetPosition(5, 1), Quaternion.identity,board);
-      Instantiate(QueenBlack, GetPosition(4, 1), Quaternion.identity,board);
+      chessBoard[4, 0] = Instantiate(KingBlack, GetPosition(5, 1), Quaternion.identity, board);
+      chessBoard[3, 0] = Instantiate(QueenBlack, GetPosition(4, 1), Quaternion.identity, board);
 
-      Instantiate(BishopBlack, GetPosition(3, 1), Quaternion.identity,board);
-      Instantiate(BishopBlack, GetPosition(6, 1), Quaternion.identity,board);
+      chessBoard[2, 0] = Instantiate(BishopBlack, GetPosition(3, 1), Quaternion.identity, board);
+      chessBoard[5, 0] = Instantiate(BishopBlack, GetPosition(6, 1), Quaternion.identity, board);
 
-      Instantiate(KnightBlack, GetPosition(2, 1), Quaternion.identity,board);
-      Instantiate(KnightBlack, GetPosition(7, 1), Quaternion.identity,board);
+      chessBoard[1, 0] = Instantiate(KnightBlack, GetPosition(2, 1), Quaternion.identity, board);
+      chessBoard[6, 0] = Instantiate(KnightBlack, GetPosition(7, 1), Quaternion.identity, board);
 
-      Instantiate(RookBlack, GetPosition(1, 1), Quaternion.identity,board);
-      Instantiate(RookBlack, GetPosition(8, 1), Quaternion.identity,board);
-
-      for (int i = 0; i < 8; i++)
-      {
-         Instantiate(PawnBlack, GetPosition(i + 1, 2), Quaternion.identity,board);
-      }
+      chessBoard[0, 0] = Instantiate(RookBlack, GetPosition(1, 1), Quaternion.identity, board);
+      chessBoard[7, 0] = Instantiate(RookBlack, GetPosition(8, 1), Quaternion.identity, board);
       
-      Instantiate(KingWhite, GetPosition(5, 8), Quaternion.identity,board);
-      Instantiate(QueenWhite, GetPosition(4, 8), Quaternion.identity,board);
+      for (int i = 0; i < 8; i++)
+      {
+         chessBoard[i, 1] = Instantiate(PawnBlack, GetPosition(i + 1, 2), Quaternion.identity, board);
+      }
 
-      Instantiate(BishopWhite, GetPosition(3, 8), Quaternion.identity,board);
-      Instantiate(BishopWhite, GetPosition(6, 8), Quaternion.identity,board);
+      chessBoard[4, 7] = Instantiate(KingWhite, GetPosition(5, 8), Quaternion.identity, board);
+      chessBoard[3, 7] = Instantiate(QueenWhite, GetPosition(4, 8), Quaternion.identity, board);
 
-      Instantiate(KingWhite, GetPosition(2, 8), Quaternion.identity,board);
-      Instantiate(KnightWhite, GetPosition(7, 8), Quaternion.identity,board);
+      chessBoard[2, 7] = Instantiate(BishopWhite, GetPosition(3, 8), Quaternion.identity, board);
+      chessBoard[5, 7] = Instantiate(BishopWhite, GetPosition(6, 8), Quaternion.identity, board);
 
-      Instantiate(RookWhite, GetPosition(1, 8), Quaternion.identity,board);
-      Instantiate(RookWhite, GetPosition(8, 8), Quaternion.identity,board);
+      chessBoard[1, 7] = Instantiate(KnightWhite, GetPosition(2, 8), Quaternion.identity, board);
+      chessBoard[6, 7] = Instantiate(KnightWhite, GetPosition(7, 8), Quaternion.identity, board);
+
+      chessBoard[0, 7] = Instantiate(RookWhite, GetPosition(1, 8), Quaternion.identity, board);
+      chessBoard[7, 7] = Instantiate(RookWhite, GetPosition(8, 8), Quaternion.identity, board);
 
       for (int i = 0; i < 8; i++)
       {
-         Instantiate(PawnWhite, GetPosition(i + 1, 7), Quaternion.identity,board);
+         chessBoard[i, 6] = Instantiate(PawnWhite, GetPosition(i + 1, 7), Quaternion.identity, board);
       }
+
+      return chessBoard;
    }
 
    private Vector3 GetPosition(int x, int y)
