@@ -111,17 +111,14 @@ public abstract class ChessPieceBase : MonoBehaviour
 
 public class HighLightData
 {
-    private HighLightColor _color;
-    private Vector2Int _position;
-
     public HighLightData(HighLightColor color, Vector2Int pos)
     {
-        _color = color;
-        _position = pos;
+        Color = color;
+        Position = pos;
     }
-    public HighLightColor Color { get; set; }
-    public Vector2Int Position { get; set; }
+    public HighLightColor Color { get; }
 
+    public Vector2Int Position { get; }
 }
 
 public enum HighLightColor
