@@ -23,14 +23,8 @@ public class BoardManager : MonoSingleton<BoardManager>
         var moves = chess.GetValidMoves(ChessBoard);
         
         // Debug.Log($"--- (BoardManager) OnClickChess");
-        Debug.Log($"--- (BoardManager) List Valid Moves Count {moves.Count}");
+        // Debug.Log($"--- (BoardManager) List Valid Moves Count {moves.Count}");
 
-        foreach (var move in moves)
-        {
-            Debug.Log($"x {move.Position.x} y {move.Position.y}");
-        }
-
-        ClearHighLight();
         SpawnHighLight(moves);
     }
     
@@ -75,6 +69,7 @@ public class BoardManager : MonoSingleton<BoardManager>
 
     private void ClearHighLight()
     {
+        Debug.Log($"Clear High Light");
         // remove high light
         if (highLights == null)
         {
