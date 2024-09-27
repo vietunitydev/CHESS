@@ -69,7 +69,6 @@ public class BoardManager : MonoSingleton<BoardManager>
 
     private void ClearHighLight()
     {
-        Debug.Log($"Clear High Light");
         // remove high light
         if (highLights == null)
         {
@@ -77,7 +76,7 @@ public class BoardManager : MonoSingleton<BoardManager>
         }
         foreach (var highLight in highLights)
         {
-            Destroy(highLight);
+            Destroy(highLight.gameObject);
         }
         highLights.Clear();
     }

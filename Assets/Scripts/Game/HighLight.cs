@@ -9,7 +9,7 @@ public class HighLight : MonoBehaviour
     
     private void OnMouseDown()
     {
-        Debug.Log($"--- (High Light) Clicked to move");
+        Debug.Log($"--- (High Light) Clicked High Light to Move");
         BoardManager.Instance.MovePiece(Position);
     }
 

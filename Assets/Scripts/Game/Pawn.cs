@@ -19,7 +19,7 @@ public class Pawn : ChessPieceBase
         Vector2Int moveOneStep = new Vector2Int(currentPosition.x, currentPosition.y + direction);
         if (IsInsideBoard(moveOneStep) && board[moveOneStep.x, moveOneStep.y] == null)
         {
-            Debug.Log($"--- (Pawn) add move 1 step forward");
+            // Debug.Log($"--- (Pawn) add move 1 step forward");
             HighLightData data = new HighLightData(HighLightColor.Blue, moveOneStep);
             validMoves.Add(data);
         }
@@ -29,10 +29,10 @@ public class Pawn : ChessPieceBase
         {
             Vector2Int moveTwoSteps = new Vector2Int(currentPosition.x, currentPosition.y + (2 * direction));
             Vector2Int moveOneStepAgain = new Vector2Int(currentPosition.x, currentPosition.y + direction);
-            Debug.Log($"--- (Pawn) is first move");
+            // Debug.Log($"--- (Pawn) is first move");
             if (IsInsideBoard(moveTwoSteps) && board[moveTwoSteps.x, moveTwoSteps.y] == null && board[moveOneStepAgain.x, moveOneStepAgain.y] == null)
             {
-                Debug.Log($"--- (Pawn) add move 2 step forward");
+                // Debug.Log($"--- (Pawn) add move 2 step forward");
                 HighLightData data = new HighLightData(HighLightColor.Blue, moveTwoSteps);
                 validMoves.Add(data);
             }
