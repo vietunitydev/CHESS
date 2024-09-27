@@ -740,6 +740,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Board
       objectReference: {fileID: 0}
+    - target: {fileID: 4063658335729400007, guid: 1fd64d277606e9f46aff33274076e5d2, type: 3}
+      propertyPath: highLightRed
+      value: 
+      objectReference: {fileID: 4767753552237543331, guid: 7391fdade50fa4518bbe56b0c0405961, type: 3}
+    - target: {fileID: 4063658335729400007, guid: 1fd64d277606e9f46aff33274076e5d2, type: 3}
+      propertyPath: highLightBlue
+      value: 
+      objectReference: {fileID: 4767753552237543331, guid: f5cdb5f7020f14aafa890a464a6e3a2b, type: 3}
     - target: {fileID: 8249880890619761590, guid: 1fd64d277606e9f46aff33274076e5d2, type: 3}
       propertyPath: m_Enabled
       value: 0
