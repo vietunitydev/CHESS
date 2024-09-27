@@ -10,7 +10,7 @@ public class Pawn : ChessPieceBase
     {
         List<HighLightData> validMoves = new List<HighLightData>();
         // hướng đi 
-        int direction = ColorType == ColorType.Black ? 1 : -1;
+        int direction = ChessColorType == ChessColorType.Black ? 1 : -1;
 
         // Vị trí hiện tại của quân tốt
         Vector2Int currentPosition = this.Position;
@@ -40,7 +40,7 @@ public class Pawn : ChessPieceBase
 
         // 3. Ăn quân chéo trái
         Vector2Int leftDiagonal = new Vector2Int(currentPosition.x - 1, currentPosition.y + direction);
-        if (IsInsideBoard(leftDiagonal) && board[leftDiagonal.x, leftDiagonal.y] != null && board[leftDiagonal.x, leftDiagonal.y].ColorType != this.ColorType)
+        if (IsInsideBoard(leftDiagonal) && board[leftDiagonal.x, leftDiagonal.y] != null && board[leftDiagonal.x, leftDiagonal.y].ChessColorType != this.ChessColorType)
         {
             HighLightData data = new HighLightData(HighLightColor.Red, leftDiagonal);
             validMoves.Add(data);
@@ -48,7 +48,7 @@ public class Pawn : ChessPieceBase
         
         // 4. Ăn quân chéo phải
         Vector2Int rightDiagonal = new Vector2Int(currentPosition.x + 1, currentPosition.y + direction);
-        if (IsInsideBoard(rightDiagonal) && board[rightDiagonal.x, rightDiagonal.y] != null && board[rightDiagonal.x, rightDiagonal.y].ColorType != this.ColorType)
+        if (IsInsideBoard(rightDiagonal) && board[rightDiagonal.x, rightDiagonal.y] != null && board[rightDiagonal.x, rightDiagonal.y].ChessColorType != this.ChessColorType)
         {
             HighLightData data = new HighLightData(HighLightColor.Red, rightDiagonal);
             validMoves.Add(data);

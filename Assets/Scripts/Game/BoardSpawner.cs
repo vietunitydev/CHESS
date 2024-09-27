@@ -26,7 +26,7 @@ public class BoardSpawner : MonoBehaviour
 
    [SerializeField] private HighLight highLightBlue;
    [SerializeField] private HighLight highLightRed;
-   public ChessPieceBase[,] GenerateBoard()
+   public ChessPieceBase[,] GenerateBoard(ChessColorType myColor)
    {
       ChessPieceBase[,] chessBoard = new ChessPieceBase[8, 8];
 
@@ -71,6 +71,12 @@ public class BoardSpawner : MonoBehaviour
             if (chessBoard[i, j] != null)
             {
                chessBoard[i, j].Position = new Vector2Int(i, j);
+               
+               if (chessBoard[i, j].ChessColorType != myColor)
+               {
+                  var meshCollider = chessBoard[i, j].GetComponent<MeshCollider>();
+                  meshCollider.enabled = false;
+               }
             }
          }
       }

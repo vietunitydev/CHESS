@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class ChessPieceBase : MonoBehaviour
 {
     [SerializeField] private ChessType chessType;
-    [SerializeField] private ColorType colorType;
+    [FormerlySerializedAs("colorType")] [SerializeField] private ChessColorType chessColorType;
 
     public ChessType ChessType => chessType;
-    public ColorType ColorType => colorType;
+    public ChessColorType ChessColorType => chessColorType;
     public Vector2Int Position { get; set; }
 
 
@@ -92,7 +93,7 @@ public abstract class ChessPieceBase : MonoBehaviour
                 validMoves.Add(data);
                 return false;
             }
-            else if (board[x, y].ColorType != ColorType)
+            else if (board[x, y].ChessColorType != ChessColorType)
             {
                 HighLightData data = new HighLightData(HighLightColor.Red, new Vector2Int(x, y));
                 validMoves.Add(data);

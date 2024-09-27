@@ -14,7 +14,7 @@ public class BoardManager : MonoSingleton<BoardManager>
     protected override void DoOnStart()
     {
         base.DoOnStart();
-        ChessBoard = boardSpawner.GenerateBoard();
+        ChessBoard = boardSpawner.GenerateBoard(ChessColorType.Black);
     }
 
     public void OnClickChess(ChessPieceBase chess)
