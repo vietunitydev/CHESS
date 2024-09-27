@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1037030827092803571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1037030827092803570}
+  - component: {fileID: 8249880890619761590}
+  - component: {fileID: 4063658335729400007}
+  m_Layer: 0
+  m_Name: Board
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1037030827092803570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037030827092803571}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 715790279701540685}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8249880890619761590
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037030827092803571}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6473239400097505017, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+--- !u!114 &4063658335729400007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037030827092803571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26b70fe7c1fc4b1eaee6ac31a80937f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sideSquare: 0.06
+  height: 0.052
+  PawnBlack: {fileID: -4187656807840585980, guid: 286f221ae8e64c84488623c45affa7bf, type: 3}
+  RookBlack: {fileID: 1330450244875856595, guid: 93dd395eb55c57b4daf3b5c28d35a56a, type: 3}
+  KnightBlack: {fileID: 9488951405004486, guid: d39feb54f164f2b4dbb47e22144db7b1, type: 3}
+  BishopBlack: {fileID: -3339860251762434709, guid: 4bdcfd353a0c75b4dba74e9ab8551767, type: 3}
+  QueenBlack: {fileID: -1574876178740013655, guid: 21278256c7aa9ab4da388250760d3466, type: 3}
+  KingBlack: {fileID: 5462120613294747102, guid: bcb9dfbceb2318a418354bd773bd9ecb, type: 3}
+  PawnWhite: {fileID: 923349702450332858, guid: 43236b25d7d744f458b0afd6f1c55873, type: 3}
+  RookWhite: {fileID: 5734721581437892569, guid: 75d95e48b446427429aa699a46a792bd, type: 3}
+  KnightWhite: {fileID: -3180545161249178616, guid: f7a71af87006047448153fd000009c53, type: 3}
+  BishopWhite: {fileID: 7342872779919503672, guid: 5496bebed72cc61419352a6ba282eb1d, type: 3}
+  QueenWhite: {fileID: 2608860909098335071, guid: cd5a2f16ba7c50546a342fb800ce7ad6, type: 3}
+  KingWhite: {fileID: 2089271493108176615, guid: 74d29e36ad1d00b4c85246b78706da73, type: 3}
+  board: {fileID: 715790279701540685}
+--- !u!1001 &1037030827092134054
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1037030827092803570}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+      propertyPath: m_Name
+      value: Board
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+--- !u!4 &715790279701540685 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae927d68f358e5947ad61ff4d6bc04b9, type: 3}
+  m_PrefabInstance: {fileID: 1037030827092134054}
+  m_PrefabAsset: {fileID: 0}
