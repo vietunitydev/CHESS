@@ -31,6 +31,12 @@ public class BoardManager : MonoSingleton<BoardManager>
     public void MovePiece(ChessPieceBase piece, Vector2Int newPosition)
     {
         piece.HandleAfterMove();
+        
+        if (ChessBoard[newPosition.x, newPosition.y] != null)
+        {
+            Destroy(ChessBoard[newPosition.x, newPosition.y].gameObject);
+        }
+        
         ChessBoard[piece.Position.x, piece.Position.y] = null;
         piece.Position = newPosition;
         ChessBoard[newPosition.x, newPosition.y] = piece;
@@ -42,6 +48,12 @@ public class BoardManager : MonoSingleton<BoardManager>
     public void MovePiece(Vector2Int newPosition)
     {
         currentChess.HandleAfterMove();
+        
+        if (ChessBoard[newPosition.x, newPosition.y] != null)
+        {
+            Destroy(ChessBoard[newPosition.x, newPosition.y].gameObject);
+        }
+
         ChessBoard[currentChess.Position.x, currentChess.Position.y] = null;
         currentChess.Position = newPosition;
         ChessBoard[newPosition.x, newPosition.y] = currentChess;
