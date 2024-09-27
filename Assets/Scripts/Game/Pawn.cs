@@ -36,26 +36,25 @@ public class Pawn : ChessPieceBase
             }
         }
 
-        // // 3. Ăn quân chéo trái
-        // Vector2Int leftDiagonal = new Vector2Int(currentPosition.x - 1, currentPosition.y + direction);
-        // if (IsInsideBoard(leftDiagonal) && board[leftDiagonal.x, leftDiagonal.y] != null && board[leftDiagonal.x, leftDiagonal.y].ColorType != this.ColorType)
-        // {
-        //     validMoves.Add(leftDiagonal);
-        // }
-        //
-        // // 4. Ăn quân chéo phải
-        // Vector2Int rightDiagonal = new Vector2Int(currentPosition.x + 1, currentPosition.y + direction);
-        // if (IsInsideBoard(rightDiagonal) && board[rightDiagonal.x, rightDiagonal.y] != null && board[rightDiagonal.x, rightDiagonal.y].ColorType != this.ColorType)
-        // {
-        //     validMoves.Add(rightDiagonal);
-        // }
+        // 3. Ăn quân chéo trái
+        Vector2Int leftDiagonal = new Vector2Int(currentPosition.x - 1, currentPosition.y + direction);
+        if (IsInsideBoard(leftDiagonal) && board[leftDiagonal.x, leftDiagonal.y] != null && board[leftDiagonal.x, leftDiagonal.y].ColorType != this.ColorType)
+        {
+            validMoves.Add(leftDiagonal);
+        }
+        
+        // 4. Ăn quân chéo phải
+        Vector2Int rightDiagonal = new Vector2Int(currentPosition.x + 1, currentPosition.y + direction);
+        if (IsInsideBoard(rightDiagonal) && board[rightDiagonal.x, rightDiagonal.y] != null && board[rightDiagonal.x, rightDiagonal.y].ColorType != this.ColorType)
+        {
+            validMoves.Add(rightDiagonal);
+        }
         
         return validMoves;
     }
     
     private bool IsInsideBoard(Vector2Int position)
     {
-        // return position.x >= 0 && position.x < 8 && position.y >= 0 && position.y < 8;
-        return true;
+        return position.x >= 0 && position.x < 8 && position.y >= 0 && position.y < 8;
     }
 }
