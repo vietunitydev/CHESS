@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2961831205882503649}
   - component: {fileID: 4767753552237543331}
   m_Layer: 0
-  m_Name: BoardHighLight
+  m_Name: HighLightRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fe29a663622eb407e8c951669af59ef2, type: 2}
+  - {fileID: 2100000, guid: 8c299d040de7c43d7b6e0d13179d7ac3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
