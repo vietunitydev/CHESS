@@ -20,6 +20,7 @@ public abstract class ChessPieceBase : MonoBehaviour
     }
     
     public abstract List<Vector2Int> GetValidMoves(ChessPieceBase[,] board);
+    public abstract void HandleAfterMove(); 
     
     protected bool IsInsideBoard(Vector2Int position)
     {

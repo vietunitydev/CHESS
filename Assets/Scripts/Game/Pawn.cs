@@ -52,4 +52,9 @@ public class Pawn : ChessPieceBase
         
         return validMoves;
     }
+
+    public override void HandleAfterMove()
+    {
+        isFirstMove = false;
+    }
 }

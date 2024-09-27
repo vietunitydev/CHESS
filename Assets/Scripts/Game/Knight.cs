@@ -31,4 +31,8 @@ public class Knight : ChessPieceBase
 
         return validMoves;
     }
+
+    public override void HandleAfterMove()
+    {
+    }
 }

@@ -14,4 +14,9 @@ public class Bishop : ChessPieceBase
 
         return validMoves;
     }
+
+    public override void HandleAfterMove()
+    {
+        
+    }
 }

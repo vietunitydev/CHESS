@@ -31,4 +31,9 @@ public class King : ChessPieceBase
 
         return validMoves;
     }
+
+    public override void HandleAfterMove()
+    {
+        
+    }
 }

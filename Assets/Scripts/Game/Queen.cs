@@ -15,4 +15,9 @@ public class Queen : ChessPieceBase
 
         return validMoves;
     }
+
+    public override void HandleAfterMove()
+    {
+        
+    }
 }

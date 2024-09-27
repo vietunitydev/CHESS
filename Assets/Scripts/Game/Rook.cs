@@ -14,4 +14,9 @@ public class Rook : ChessPieceBase
 
         return validMoves;
     }
+
+    public override void HandleAfterMove()
+    {
+        
+    }
 }
