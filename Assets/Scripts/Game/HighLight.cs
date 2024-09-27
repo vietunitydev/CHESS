@@ -12,4 +12,9 @@ public class HighLight : MonoBehaviour
         Debug.Log($"--- (High Light) Clicked to move");
         BoardManager.Instance.MovePiece(Position);
     }
+
+    public enum HighLightColor
+    {
+        Blue, Red
+    }
 }

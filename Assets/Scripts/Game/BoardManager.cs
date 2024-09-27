@@ -63,7 +63,7 @@ public class BoardManager : MonoSingleton<BoardManager>
         // spawn highLight
         foreach (var move in moves)
         {
-            var highLightObject = boardSpawner.SpawnHighLight(move.x, move.y);
+            var highLightObject = boardSpawner.SpawnHighLightBlue(move.x, move.y);
             HighLight highLight = highLightObject.GetComponent<HighLight>();
             highLight.Position = new Vector2Int(move.x, move.y);
             highLights.Add(highLightObject);
