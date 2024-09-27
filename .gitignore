@@ -1,0 +1,10 @@
+obj
+.idea
+Library
+Logs
+Temp
+UserSettings
+Assembly-CSharp-firstpass.csproj
+Assembly-CSharp.csproj
+CHESS.sln
+MonoSingleton.csproj
