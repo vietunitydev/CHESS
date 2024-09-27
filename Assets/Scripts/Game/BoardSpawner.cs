@@ -63,6 +63,17 @@ public class BoardSpawner : MonoBehaviour
          chessBoard[i, 6] = Instantiate(PawnWhite, GetPosition(i + 1, 7), Quaternion.identity, board);
       }
 
+      for (int i = 0; i < 8; i++)
+      {
+         for (int j = 0; j < 8; j++)
+         {
+            if (chessBoard[i, j] != null)
+            {
+               chessBoard[i, j].Position = new Vector2Int(i, j);
+            }
+         }
+      }
+
       return chessBoard;
    }
 

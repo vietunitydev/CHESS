@@ -14,4 +14,18 @@ public class BoardManager : MonoSingleton<BoardManager>
         base.DoOnStart();
         ChessBoard = boardSpawner.GenerateBoard();
     }
+
+    public void OnClickChess(ChessPieceBase chess)
+    {
+        Debug.Log($"--- (BoardManager) OnClickChess");
+        var list = chess.GetValidMoves(ChessBoard);
+        
+        Debug.Log($"--- (BoardManager) List Valid Moves Count {list.Count}");
+
+
+        foreach (var i in list)
+        {
+            Debug.Log($"x {i.x} y {i.y}");
+        }
+    }
 }
