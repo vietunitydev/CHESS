@@ -84,6 +84,7 @@ MonoBehaviour:
   QueenWhite: {fileID: 2608860909098335071, guid: cd5a2f16ba7c50546a342fb800ce7ad6, type: 3}
   KingWhite: {fileID: 2089271493108176615, guid: 74d29e36ad1d00b4c85246b78706da73, type: 3}
   board: {fileID: 715790279701540685}
+  highLightPrefab: {fileID: 2402854989533020365, guid: f5cdb5f7020f14aafa890a464a6e3a2b, type: 3}
 --- !u!114 &5013303028086040704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c61635f15a8c4bc0916b3e6794de1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyThisObject: 1
   boardSpawner: {fileID: 4063658335729400007}
 --- !u!1001 &1037030827092134054
 PrefabInstance:

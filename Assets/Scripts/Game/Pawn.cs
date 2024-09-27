@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pawn : ChessPieceBase
 {
 
-    [SerializeField] private bool isFirstMove = false;
+    [SerializeField] private bool isFirstMove = true;
     public override List<Vector2Int> GetValidMoves(ChessPieceBase[,] board)
     {
         List<Vector2Int> validMoves = new List<Vector2Int>();
@@ -19,6 +19,7 @@ public class Pawn : ChessPieceBase
         Vector2Int moveOneStep = new Vector2Int(currentPosition.x, currentPosition.y + direction);
         if (IsInsideBoard(moveOneStep) && board[moveOneStep.x, moveOneStep.y] == null)
         {
+            Debug.Log($"--- (Pawn) add move 1 step forward");
             validMoves.Add(moveOneStep);
         }
 
@@ -27,9 +28,10 @@ public class Pawn : ChessPieceBase
         {
             Vector2Int moveTwoSteps = new Vector2Int(currentPosition.x, currentPosition.y + (2 * direction));
             Vector2Int moveOneStepAgain = new Vector2Int(currentPosition.x, currentPosition.y + direction);
-
+            Debug.Log($"--- (Pawn) is first move");
             if (IsInsideBoard(moveTwoSteps) && board[moveTwoSteps.x, moveTwoSteps.y] == null && board[moveOneStepAgain.x, moveOneStepAgain.y] == null)
             {
+                Debug.Log($"--- (Pawn) add move 2 step forward");
                 validMoves.Add(moveTwoSteps);
             }
         }
@@ -48,7 +50,6 @@ public class Pawn : ChessPieceBase
         //     validMoves.Add(rightDiagonal);
         // }
         
-
         return validMoves;
     }
     

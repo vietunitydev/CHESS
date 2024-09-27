@@ -70,6 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chessType: 1
   colorType: 1
+  isFirstMove: 1
 --- !u!1001 &2860748673204531777
 PrefabInstance:
   m_ObjectHideFlags: 0

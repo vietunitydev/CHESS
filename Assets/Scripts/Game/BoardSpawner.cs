@@ -23,8 +23,8 @@ public class BoardSpawner : MonoBehaviour
    [SerializeField] private ChessPieceBase QueenWhite;
    [SerializeField] private ChessPieceBase KingWhite;
    [SerializeField] private Transform board;
-   
 
+   [SerializeField] private GameObject highLightPrefab;
    public ChessPieceBase[,] GenerateBoard()
    {
       ChessPieceBase[,] chessBoard = new ChessPieceBase[8, 8];
@@ -91,5 +91,10 @@ public class BoardSpawner : MonoBehaviour
       var y = newPos.y - 4;
 
       return new Vector3(-sideSquare/2 + x * sideSquare, height,-sideSquare/2 + y * sideSquare);
+   }
+
+   public GameObject SpawnHighLight(int x, int y)
+   {
+      return Instantiate(highLightPrefab, GetPosition(x + 1, y + 1), Quaternion.identity, board);
    }
 }
