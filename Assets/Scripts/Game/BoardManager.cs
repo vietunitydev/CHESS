@@ -8,23 +8,25 @@ public class BoardManager : MonoSingleton<BoardManager>
 {
     [SerializeField] private BoardSpawner boardSpawner;
     [SerializeField] private List<HighLight> highLights = new();
-    public ChessPieceBase[,] ChessBoard { get; private set; }
-    private ChessPieceBase currentChess;
+    
+    [SerializeField] private ChessColorType myColor;
+    private ChessPieceBase[,] ChessBoard { get; set; }
+    private ChessPieceBase _currentChess;
 
     protected override void DoOnStart()
     {
         base.DoOnStart();
-        ChessBoard = boardSpawner.GenerateBoard(ChessColorType.Black);
+        ChessBoard = boardSpawner.GenerateBoard(myColor);
     }
 
     public void OnClickChess(ChessPieceBase chess)
     {
-        currentChess = chess;
+        _currentChess = chess;
         var moves = chess.GetValidMoves(ChessBoard);
         
         // Debug.Log($"--- (BoardManager) OnClickChess");
         // Debug.Log($"--- (BoardManager) List Valid Moves Count {moves.Count}");
-
+        ClearHighLight();
         SpawnHighLight(moves);
     }
     
@@ -47,18 +49,18 @@ public class BoardManager : MonoSingleton<BoardManager>
     }
     public void MovePiece(Vector2Int newPosition)
     {
-        currentChess.HandleAfterMove();
+        _currentChess.HandleAfterMove();
         
         if (ChessBoard[newPosition.x, newPosition.y] != null)
         {
             Destroy(ChessBoard[newPosition.x, newPosition.y].gameObject);
         }
 
-        ChessBoard[currentChess.Position.x, currentChess.Position.y] = null;
-        currentChess.Position = newPosition;
-        ChessBoard[newPosition.x, newPosition.y] = currentChess;
+        ChessBoard[_currentChess.Position.x, _currentChess.Position.y] = null;
+        _currentChess.Position = newPosition;
+        ChessBoard[newPosition.x, newPosition.y] = _currentChess;
 
-        currentChess.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
+        _currentChess.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
         
         ClearHighLight();
     }
@@ -91,5 +93,24 @@ public class BoardManager : MonoSingleton<BoardManager>
             Destroy(highLight.gameObject);
         }
         highLights.Clear();
+    }
+
+    private bool IsWin()
+    {
+        // if king die 
+        bool kingStillLive = false;
+        foreach (var chess in ChessBoard)
+        {
+            if (chess != null)
+            {
+                if (chess.ChessType == ChessType.King && chess.ChessColorType != myColor)
+                {
+                    kingStillLive = true;
+                }
+            }
+        }
+        
+
+        return false;
     }
 }

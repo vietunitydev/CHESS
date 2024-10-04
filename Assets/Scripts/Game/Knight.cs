@@ -23,9 +23,14 @@ public class Knight : ChessPieceBase
 
         foreach (Vector2Int move in possibleMoves)
         {
-            if (IsInsideBoard(move) && (board[move.x, move.y] == null || board[move.x, move.y].ChessColorType != this.ChessColorType))
+            if (IsInsideBoard(move) && board[move.x, move.y] == null)
             {
                 HighLightData data = new HighLightData(HighLightColor.Blue, move);
+                validMoves.Add(data);
+            }
+            else if (IsInsideBoard(move) && board[move.x, move.y].ChessColorType != this.ChessColorType)
+            {
+                HighLightData data = new HighLightData(HighLightColor.Red, move);
                 validMoves.Add(data);
             }
         }
