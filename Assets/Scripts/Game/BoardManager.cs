@@ -46,6 +46,8 @@ public class BoardManager : MonoSingleton<BoardManager>
         piece.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
         
         ClearHighLight();
+
+        IsKingInCheck(ChessColorType.Black);
     }
     public void MovePiece(Vector2Int newPosition)
     {
@@ -63,6 +65,8 @@ public class BoardManager : MonoSingleton<BoardManager>
         _currentChess.transform.position = boardSpawner.GetPosition(newPosition.x, newPosition.y);
         
         ClearHighLight();
+
+        IsKingInCheck(ChessColorType.Black);
     }
 
     private void SpawnHighLight(List<HighLightData> moves)
@@ -94,23 +98,81 @@ public class BoardManager : MonoSingleton<BoardManager>
         }
         highLights.Clear();
     }
-
-    private bool IsWin()
+    
+    // viet 1 ham de kiem tra xem vua co dang bi chieu hay khong 
+    private bool IsKingInCheck(ChessColorType currentColor)
     {
-        // if king die 
-        bool kingStillLive = false;
+        ChessPieceBase myKing = null;
         foreach (var chess in ChessBoard)
         {
-            if (chess != null)
+            if (chess == null)
             {
-                if (chess.ChessType == ChessType.King && chess.ChessColorType != myColor)
+                continue;
+            }
+            if (chess.ChessType == ChessType.King)
+            {
+                if (currentColor == chess.ChessColorType)
                 {
-                    kingStillLive = true;
+                    myKing = chess;
+                    break;
                 }
             }
         }
-        
+        foreach (var chess in ChessBoard)
+        {
+            if (chess == null)
+            {
+                continue;
+            }
+            
+            if (chess.ChessColorType != currentColor)
+            {
+                List<HighLightData> moves = chess.GetValidMoves(ChessBoard);
 
+                foreach (var move in moves)
+                {
+                    if (myKing != null && myKing.Position == move.Position)
+                    {
+                        Debug.Log($"Vua {currentColor} dang bi chieu !!!");
+                        return true;
+                    }
+                }
+            }
+        }
+        // vua khong bi chieu
         return false;
+    }
+
+    private bool IsCheckmate(ChessColorType currentColor)
+    {
+        if (!IsKingInCheck(currentColor)) {
+            return false;
+        }
+
+        // Lấy tất cả các nước đi hợp lệ
+    
+        // Nếu không còn nước đi hợp lệ, đó là chiếu tướng
+    
+        return false;
+    }
+    
+
+    private void CheckGameState(ChessColorType currentColor)
+    {
+        if (IsCheckmate(currentColor)) 
+        {
+            if (currentColor == ChessColorType.Black) 
+            {
+                Debug.Log("Black thắng!");
+            } 
+            else 
+            {
+                Debug.Log("White thắng!");
+            }
+        } 
+        else 
+        {
+            Debug.Log("Trò chơi tiếp tục.");
+        }
     }
 }
